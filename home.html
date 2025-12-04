@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S5 TECHNOLOGIES</title>
+
+<style>
+/* ----------- GENERAL STYLING ----------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #aff0b2;
+}
+
+/* ----------- HEADER ----------- */
+header {
+    background-color: #2ad17a;
+    color: white;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+/* ----------- NAV ----------- */
+nav {
+    position: sticky;
+    top: 0;
+    background: #333;
+    padding: 10px;
+    text-align: right;
+    z-index: 9999;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ----------- PHONE SECTION ----------- */
+.phone-section {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    gap: 40px;
+}
+
+.phone-frame {
+    width: 420px;
+    position: relative;
+    animation: float 3s ease-in-out infinite alternate;
+}
+
+.phone-frame img {
+    width: 100%;
+}
+
+/* Phone Screen Area */
+.phone-screen {
+    position: absolute;
+    top: 3px;
+    left: 83px;
+    width: 197px;
+    height: 446px;
+    background: #f5fbf5;
+    border-radius: 32px;
+    overflow-y: hidden;
+    padding: 9px;
+}
+
+/* Chat Bubbles */
+.chat-bubble {
+    max-width: 60%;
+    margin: 10px 0;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 15px;
+    opacity: 0;
+    animation: chatAppear 1s forwards;
+}
+
+.chat-left { background: white; margin-right: auto; }
+.chat-right { background: #4caf50; color: white; margin-left: auto; }
+
+@keyframes chatAppear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(20px); }
+}
+
+/* ----------- SECTIONS ----------- */
+.section {
+    padding: 40px;
+    background: #e1ebdd;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+/* ----------- SERVICE CARDS ----------- */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    width: 220px;
+    background: #b8f5b5;
+    padding: 40px 20px;
+    border-radius: 10px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: scale(1.11);
+    background: #0ff1d3;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* ----------- FOOTER ----------- */
+footer {
+    background-color: #2ad17a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>S5 TECHNOLOGIES</h1>
+    <p>Automation Redefined</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- ----------- PHONE & ABOUT CONTENT ----------- -->
+<section class="phone-section" id="about">
+
+    <!-- PHONE -->
+    <div class="phone-frame">
+        <img src="C:\Users\Johns\OneDrive\Documents\Desktop\news5.png" alt="Phone Mockup">
+        <div class="phone-screen" id="chatArea"></div>
+    </div>
+
+    <!-- ABOUT CONTENT -->
+    <div style="max-width:500px;">
+        <h2>About Us</h2>
+        <p>
+            S5 Technologies specializes in advanced digital automation solution delivery.
+            We provide subscription-based marketing software that enables businesses to send bulk WhatsApp 
+            and Email campaigns, automate follow-ups, and track analytics from one platform.
+            Request a free live demo and experience next-level automation today.
+        </p>
+        <button style="padding:12px 20px;border:none;background:#009e5e;color:white;border-radius:6px;cursor:pointer;">Get Free Demo</button>
+    </div>
+</section>
+
+<!-- ----------- SERVICES ----------- -->
+<section class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="card-container">
+        <div class="service-card">
+            <h3>Web Development</h3>
+            <p>Modern Websites & Web Apps</p>
+        </div>
+        <div class="service-card">
+            <h3>Automation</h3>
+            <p>Custom Bots & Workflows</p>
+        </div>
+        <div class="service-card">
+            <h3>Bulk Messaging</h3>
+            <p>WhatsApp & Email Solutions</p>
+        </div>
+    </div>
+</section>
+
+<!-- ----------- CONTACT ----------- -->
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@s5technologies.com<br>Phone: +91 7502208748</p>
+    <button>Message Us</button>
+</section>
+
+<footer>© 2025 S5 TECHNOLOGIES | All Rights Reserved</footer>
+
+<script>
+const messages = [
+    { text: "Hello 👋 Welcome to S5 Technologies!", type: "left" },
+    { text: "Hi, I need WhatsApp Marketing.", type: "right" },
+    { text: "Sure! We provide automation tools & campaigns.", type: "left" },
+    { text: "Can I try a demo?", type: "right" },
+    { text: "Absolutely 😊 Tap the button below.", type: "left" }
+];
+
+let index = 0;
+
+function showMessage() {
+    if (index < messages.length) {
+        const chatArea = document.getElementById("chatArea");
+        const msg = document.createElement("div");
+        msg.className = "chat-bubble chat-" + messages[index].type;
+        msg.innerText = messages[index].text;
+        chatArea.appendChild(msg);
+        chatArea.scrollTop = chatArea.scrollHeight;
+        index++;
+        setTimeout(showMessage, 1800);
+    }
+}
+
+showMessage();
+</script>
+
+</body>
+</html>
